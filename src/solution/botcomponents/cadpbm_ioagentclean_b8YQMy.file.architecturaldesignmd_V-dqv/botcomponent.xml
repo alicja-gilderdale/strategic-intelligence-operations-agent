@@ -1,0 +1,12 @@
+<botcomponent schemaname="cadpbm_ioagentclean_b8YQMy.file.architecturaldesignmd_V-dqv">
+  <componenttype>14</componenttype>
+  <description>This knowledge source searches information contained in architectural_design.md</description>
+  <filedata mimetype="application/octet-stream">architectural_design.md</filedata>
+  <iscustomizable>0</iscustomizable>
+  <name>architectural_design.md</name>
+  <parentbotid>
+    <schemaname>cadpbm_ioagentclean_b8YQMy</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

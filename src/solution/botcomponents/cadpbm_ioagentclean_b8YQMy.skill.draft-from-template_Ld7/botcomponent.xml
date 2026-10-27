@@ -1,0 +1,11 @@
+<botcomponent schemaname="cadpbm_ioagentclean_b8YQMy.skill.draft-from-template_Ld7">
+  <componenttype>9</componenttype>
+  <description>Draft a template-based artefact such as PMO status, account brief, competitor battlecard, or incident brief. Reads templates/registry.md and the selected profile, refuses if Agent Ready is not Yes, and only ever drafts — never approves or submits.</description>
+  <iscustomizable>0</iscustomizable>
+  <name>draft-from-template</name>
+  <parentbotid>
+    <schemaname>cadpbm_ioagentclean_b8YQMy</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

@@ -1,0 +1,11 @@
+<botcomponent schemaname="cadpbm_ioagentclean_b8YQMy.skill.render-html-report_oIW">
+  <componenttype>9</componenttype>
+  <description>Render a completed Intelligence Operations output artifact into the reusable HTML report template with direct source links and domain-specific layout labels.</description>
+  <iscustomizable>0</iscustomizable>
+  <name>render-html-report</name>
+  <parentbotid>
+    <schemaname>cadpbm_ioagentclean_b8YQMy</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

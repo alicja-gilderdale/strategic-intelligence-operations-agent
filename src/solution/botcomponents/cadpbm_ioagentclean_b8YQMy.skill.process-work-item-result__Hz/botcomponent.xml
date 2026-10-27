@@ -1,0 +1,11 @@
+<botcomponent schemaname="cadpbm_ioagentclean_b8YQMy.skill.process-work-item-result__Hz">
+  <componenttype>9</componenttype>
+  <description>Interpret worker results for IO Work Items and decide whether remediation or synthesis is needed. Never publishes.</description>
+  <iscustomizable>0</iscustomizable>
+  <name>process-work-item-result</name>
+  <parentbotid>
+    <schemaname>cadpbm_ioagentclean_b8YQMy</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

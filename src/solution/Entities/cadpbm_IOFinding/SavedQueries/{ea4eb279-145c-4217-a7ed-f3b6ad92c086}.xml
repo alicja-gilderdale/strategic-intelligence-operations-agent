@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{ea4eb279-145c-4217-a7ed-f3b6ad92c086}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cadpbm_findingid" select="1" icon="1" preview="1">
+        <row name="result" id="cadpbm_iofindingid">
+          <cell name="cadpbm_findingid" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cadpbm_iofinding">
+          <attribute name="cadpbm_iofindingid" />
+          <attribute name="cadpbm_findingid" />
+          <attribute name="createdon" />
+          <order attribute="cadpbm_findingid" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="1" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Inactive IO Findings" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

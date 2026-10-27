@@ -1,0 +1,9 @@
+<botcomponent schemaname="Default_FeedbackCollectionBotSettings_d8XiUz">
+  <componenttype>18</componenttype>
+  <iscustomizable>0</iscustomizable>
+  <parentbotid>
+    <schemaname>cadpbm_ioagentclean_b8YQMy</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

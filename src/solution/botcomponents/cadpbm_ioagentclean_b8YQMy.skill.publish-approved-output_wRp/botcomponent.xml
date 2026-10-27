@@ -1,0 +1,11 @@
+<botcomponent schemaname="cadpbm_ioagentclean_b8YQMy.skill.publish-approved-output_wRp">
+  <componenttype>9</componenttype>
+  <description>Publish approved outputs to SharePoint reports/drafts. Only runs after IO Approval Item is Approved.</description>
+  <iscustomizable>0</iscustomizable>
+  <name>publish-approved-output</name>
+  <parentbotid>
+    <schemaname>cadpbm_ioagentclean_b8YQMy</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

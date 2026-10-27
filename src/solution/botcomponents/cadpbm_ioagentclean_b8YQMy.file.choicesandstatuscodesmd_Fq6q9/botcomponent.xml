@@ -1,0 +1,12 @@
+<botcomponent schemaname="cadpbm_ioagentclean_b8YQMy.file.choicesandstatuscodesmd_Fq6q9">
+  <componenttype>14</componenttype>
+  <description>This knowledge source searches information contained in choices_and_status_codes.md</description>
+  <filedata mimetype="application/octet-stream">choices_and_status_codes.md</filedata>
+  <iscustomizable>0</iscustomizable>
+  <name>choices_and_status_codes.md</name>
+  <parentbotid>
+    <schemaname>cadpbm_ioagentclean_b8YQMy</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

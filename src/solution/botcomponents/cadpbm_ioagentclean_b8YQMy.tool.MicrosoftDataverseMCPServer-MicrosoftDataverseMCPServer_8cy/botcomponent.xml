@@ -1,0 +1,11 @@
+<botcomponent schemaname="cadpbm_ioagentclean_b8YQMy.tool.MicrosoftDataverseMCPServer-MicrosoftDataverseMCPServer_8cy">
+  <componenttype>9</componenttype>
+  <description>Provides Remote MCP Server access to Dataverse</description>
+  <iscustomizable>0</iscustomizable>
+  <name>Microsoft Dataverse MCP Server — Microsoft Dataverse MCP Server</name>
+  <parentbotid>
+    <schemaname>cadpbm_ioagentclean_b8YQMy</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

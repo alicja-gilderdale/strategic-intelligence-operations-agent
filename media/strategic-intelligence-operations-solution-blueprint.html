@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%237c3aed'/%3E%3Cpath d='M20 17h24v7H20zm0 12h24v7H20zm0 12h24v7H20z' fill='white'/%3E%3C/svg%3E" />
+<title>Strategic Intelligence Operations · Enterprise Solution Blueprint</title>
+<style>
+  :root{
+    --bg:#08080c;
+    --ink:#f5f5f8;
+    --muted:#a6a6b4;
+    --faint:#6d6d80;
+    --line:rgba(255,255,255,.09);
+    --card:rgba(255,255,255,.035);
+    --card-hi:rgba(255,255,255,.06);
+    --grad:linear-gradient(120deg,#3b82f6 0%,#8b5cf6 48%,#ec4899 100%);
+    --grad-soft:linear-gradient(120deg,#60a5fa,#a78bfa,#f472b6);
+    --blue:#60a5fa;--violet:#a78bfa;--pink:#f472b6;
+    --mono:"Cascadia Code","SF Mono",ui-monospace,Consolas,monospace;
+    --sans:"Segoe UI Variable","Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+    --line-hi:rgba(255,255,255,.22);
+  }
+  [data-theme="light"]{
+    --bg:#f2f3f7;--ink:#14141b;--muted:#52525f;--faint:#8a8a99;
+    --line:rgba(0,0,0,.10);--line-hi:rgba(0,0,0,.20);
+    --card:#ffffff;--card-hi:#ffffff;
+    --grad-soft:linear-gradient(120deg,#2563eb,#7c3aed,#db2777);
+    --blue:#2563eb;--violet:#7c3aed;--pink:#db2777;
+  }
+  [data-theme="light"] .card{box-shadow:0 1px 3px rgba(0,0,0,.06)}
+  [data-theme="light"] .card:hover,[data-theme="light"] .step:hover{border-color:var(--line-hi)}
+  [data-theme="light"] .link{border-color:rgba(0,0,0,.16);background:#fff}
+  [data-theme="light"] .nav button,[data-theme="light"] .theme-btn{background:#fff}
+  [data-theme="light"] .bg-glow::before,[data-theme="light"] .bg-glow::after{opacity:.10}
+  [data-theme="light"] .kick.c1{color:#059669}
+  [data-theme="light"] .kick.c2{color:#0891b2}
+  [data-theme="light"] .kick.c3{color:#7c3aed}
+  [data-theme="light"] .kick.c4{color:#db2777}
+  [data-theme="light"] .kick.c5{color:#ea580c}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{font-family:var(--sans);background:var(--bg);color:var(--ink);overflow:hidden;-webkit-font-smoothing:antialiased}
+
+  .bg-glow{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+  .bg-glow::before,.bg-glow::after{content:"";position:absolute;width:70vw;height:70vw;border-radius:50%;filter:blur(120px);opacity:.20}
+  .bg-glow::before{background:radial-gradient(circle,#3b82f6,transparent 60%);top:-25vw;left:-15vw;animation:drift1 22s ease-in-out infinite}
+  .bg-glow::after{background:radial-gradient(circle,#ec4899,transparent 60%);bottom:-30vw;right:-18vw;animation:drift2 26s ease-in-out infinite}
+  @keyframes drift1{50%{transform:translate(6vw,4vh) scale(1.1)}}
+  @keyframes drift2{50%{transform:translate(-5vw,-4vh) scale(1.12)}}
+
+  .deck{position:relative;z-index:1;height:100vh;width:100vw}
+  .slide{position:absolute;inset:0;display:grid;place-items:center;padding:clamp(2.6rem,5.4vh,4rem) clamp(3rem,6vw,5.5rem);
+    opacity:0;visibility:hidden;transform:translateY(22px) scale(.995);
+    transition:opacity .55s ease,transform .55s ease,visibility .55s;overflow:hidden}
+  .slide.active{opacity:1;visibility:visible;transform:none}
+  .content{width:min(100%,1320px);max-width:1320px;margin:0 auto}
+
+  .slide.active .content>*{animation:none;opacity:1;transform:none}
+  .slide.active .content>*:nth-child(1){animation-delay:0s}
+  .slide.active .content>*:nth-child(2){animation-delay:0s}
+  .slide.active .content>*:nth-child(3){animation-delay:0s}
+  .slide.active .content>*:nth-child(4){animation-delay:0s}
+  .slide.active .content>*:nth-child(5){animation-delay:0s}
+  .slide.active .content>*:nth-child(6){animation-delay:0s}
+  @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+  .eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+    background:var(--grad-soft);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:1.1rem;display:inline-block}
+  h1{font-size:clamp(3.1rem,6.25vw,5.8rem);font-weight:700;letter-spacing:-.04em;line-height:.98}
+  h2{font-size:clamp(2rem,4.05vw,3.35rem);font-weight:700;letter-spacing:-.035em;line-height:1.02;margin-bottom:1.25rem}
+  h3{font-size:1.28rem;font-weight:600;letter-spacing:-.01em}
+  .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lead{font-size:clamp(1.3rem,2.15vw,1.85rem);color:var(--muted);line-height:1.42;max-width:58ch}
+  .lead.lead-sm{font-size:clamp(1.2rem,1.95vw,1.65rem)}
+  p.small{color:var(--faint);font-size:1.05rem}
+  strong{color:var(--ink);font-weight:600}
+  em{font-style:italic;color:var(--ink)}
+
+  .grid{display:grid;gap:1.1rem;margin-top:2rem}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  .g5{grid-template-columns:repeat(5,1fr)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.35rem 1.45rem;
+    transition:border-color .3s,background .3s,transform .3s}
+  .card:hover{border-color:rgba(255,255,255,.22);background:var(--card-hi);transform:translateY(-3px)}
+  .card h3{margin-bottom:.4rem}
+  .card p{color:var(--muted);font-size:1.08rem;line-height:1.46}
+  .ic{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;margin-bottom:1rem;
+    background:rgba(139,92,246,.14);border:1px solid rgba(139,92,246,.32);color:var(--violet);font-size:1.22rem;font-weight:700}
+  .num-badge{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;
+    background:var(--grad);color:#fff;font-weight:700;font-size:1.08rem;margin-bottom:.9rem}
+
+  .plat .card{padding:1.15rem 1.18rem;border-top-width:2px}
+  .plat .card h3{font-size:1.12rem;margin-bottom:.45rem;line-height:1.18}
+  .plat .card p{font-size:1.06rem;line-height:1.38}
+  .plat .kick{font-size:.79rem}
+  .kick{display:block;font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.62rem;line-height:1.35}
+
+  .chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.6rem}
+  .chip{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem 1rem;font-size:.92rem;color:var(--muted)}
+  .chip b{color:var(--ink)}
+  .callout{border:1px solid rgba(236,72,153,.3);border-radius:16px;
+    background:linear-gradient(120deg,rgba(59,130,246,.08),rgba(236,72,153,.08));padding:1.55rem 1.75rem;margin-top:1.9rem}
+  .callout .tag{font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;color:var(--pink);font-weight:700}
+  .callout p{margin-top:.58rem;color:var(--ink);font-size:1.2rem;line-height:1.45}
+  .trust-callout .tag{font-size:.9rem}
+  .trust-callout p{font-size:1.32rem}
+
+  .title-slide .content{max-width:1320px}
+  .subtitle{font-size:clamp(1.55rem,2.8vw,2.45rem);color:var(--ink);margin-top:1.65rem;font-weight:500;letter-spacing:-.01em}
+  .meta-row{display:flex;flex-wrap:wrap;gap:.75rem 2.2rem;margin-top:2.6rem;color:var(--muted);font-size:1.15rem}
+  .meta-row span{display:inline-flex;align-items:center;gap:.5rem}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--grad);display:inline-block}
+  .hint{margin-top:3rem;color:var(--faint);font-size:.98rem;display:flex;align-items:center;gap:.65rem;flex-wrap:wrap}
+  .key{border:1px solid var(--line);border-radius:6px;padding:.12rem .5rem;font-family:var(--mono);font-size:.92rem;color:var(--muted)}
+
+  .stat-num{font-size:clamp(2.1rem,3.5vw,3.2rem);font-weight:700;letter-spacing:-.02em;margin-bottom:.45rem}
+  .stat-num.g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .loop{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin-top:.4rem}
+  .node{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:1rem 1.05rem;text-align:left;flex:1;min-width:220px}
+  .node .n-t{font-weight:700;font-size:1.08rem}
+  .node .n-d{color:var(--faint);font-size:.9rem;margin-top:.25rem}
+  .node .n-more{color:var(--muted);font-size:.9rem;line-height:1.35;margin-top:.55rem}
+  .arrow{color:var(--violet);font-size:1.3rem;font-weight:700}
+  .flow-panel{border:1px solid var(--line);border-radius:16px;padding:1.55rem;background:var(--card)}
+  .flow-panel .ph{font-size:.86rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);font-weight:700;margin-bottom:1rem}
+  .challenge-panel{padding:1.85rem 2rem}
+  .challenge-panel .ph{font-size:1rem;margin-bottom:1.15rem}
+  .challenge-panel li{font-size:1.28rem;line-height:1.65}
+
+  .steps{display:flex;flex-direction:column;gap:.85rem;margin-top:1.9rem;max-width:940px}
+  .step{display:flex;align-items:center;gap:1.2rem;border:1px solid var(--line);border-radius:14px;padding:1rem 1.28rem;background:var(--card);transition:.3s}
+  .step:hover{border-color:rgba(255,255,255,.22);transform:translateX(4px)}
+  .step .s-n{font-family:var(--mono);color:var(--violet);font-weight:700;font-size:1rem;min-width:1.4rem}
+  .step .s-t{font-size:1.22rem}
+  .step.go{border-color:rgba(236,72,153,.4);background:linear-gradient(120deg,rgba(59,130,246,.1),rgba(236,72,153,.12))}
+  .step.go .s-t{font-weight:700;font-size:1.35rem;letter-spacing:.02em}
+
+  .learning-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-top:1.35rem}
+  .learning-card{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:1.25rem 1.35rem}
+  .learning-card .ph{font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);font-weight:700;margin-bottom:.75rem}
+  .learning-card h3{font-size:1.2rem;margin-bottom:.55rem}
+  .learning-card ul{color:var(--muted);font-size:1.01rem;line-height:1.48;padding-left:1.15rem}
+  .learning-card li{margin-bottom:.36rem}
+  .learning-card strong{color:var(--ink)}
+  .learning-callout{margin-top:1.05rem;border:1px solid rgba(236,72,153,.3);border-radius:16px;background:linear-gradient(120deg,rgba(59,130,246,.08),rgba(236,72,153,.08));padding:1.1rem 1.35rem}
+  .learning-callout p{color:var(--ink);font-size:1.09rem;line-height:1.45}
+
+  .slide-map{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.5rem}
+  .jump-tile{appearance:none;text-align:left;cursor:pointer;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.05rem 1.15rem;color:var(--ink);transition:border-color .25s,background .25s,transform .25s}
+  .jump-tile:hover{border-color:var(--violet);background:rgba(139,92,246,.16);transform:translateY(-3px)}
+  .jump-tile .jump-num{display:block;font-family:var(--mono);font-size:.78rem;color:var(--pink);letter-spacing:.08em;margin-bottom:.45rem}
+  .jump-tile .jump-title{display:block;font-size:1.05rem;font-weight:700;line-height:1.2;margin-bottom:.35rem}
+  .jump-tile .jump-desc{display:block;font-size:.88rem;color:var(--muted);line-height:1.35}
+
+  .diagram-frame{margin-top:1rem;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.035);padding:.85rem;box-shadow:0 18px 44px rgba(0,0,0,.22)}
+  .diagram-frame img{display:block;width:100%;height:min(62vh,620px);object-fit:contain;border-radius:14px}
+  .zoomable-diagram{cursor:zoom-in}
+  .diagram-lightbox{position:fixed;inset:0;z-index:1000;display:none;place-items:center;padding:1.25rem;background:rgba(8,8,12,.96);cursor:zoom-out}
+  .diagram-lightbox.open{display:grid}
+  .diagram-lightbox img{display:block;width:100%;height:100%;max-width:96vw;max-height:94vh;object-fit:contain}
+  .diagram-caption{display:flex;justify-content:space-between;gap:1rem;margin-top:.7rem;color:var(--muted);font-size:.92rem}
+  .diagram-caption code{font-family:var(--mono);color:var(--ink)}
+  .diagram-subtitle{color:var(--muted);font-size:1.2rem;line-height:1.45;margin-top:-.35rem}
+
+  .file-tree-wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:1rem;margin-top:1.2rem;align-items:stretch}
+  .file-tree{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.1rem 1.25rem;max-height:57vh;overflow:auto;font-family:var(--mono);font-size:.9rem;line-height:1.45;color:var(--muted)}
+  .file-tree details{margin:.25rem 0 .25rem 1rem}
+  .file-tree summary{cursor:pointer;color:var(--ink);font-weight:700}
+  .file-tree .file{margin-left:1.8rem;white-space:nowrap}
+  .file-tree button.file{display:block;border:0;background:transparent;color:var(--ink);font:inherit;text-align:left;cursor:pointer;padding:.08rem .25rem;border-radius:8px}
+  .file-tree button.file:hover,.file-tree button.file.active{background:rgba(139,92,246,.16);color:var(--pink)}
+  .file-tree .folder{color:var(--blue)}
+  .file-tree .count{color:var(--pink);font-family:var(--sans);font-size:.82rem;margin-left:.4rem}
+  .tree-notes{display:grid;gap:1rem}
+  .tree-notes .card{padding:1.05rem 1.15rem}
+  .tree-notes .card p{font-size:1rem}
+  .md-preview{background:var(--card);border:1px solid var(--line);border-radius:16px;min-height:57vh;max-height:57vh;display:flex;flex-direction:column;overflow:hidden}
+  .md-preview-head{padding:1rem 1.1rem;border-bottom:1px solid var(--line)}
+  .md-preview-head .path{font-family:var(--mono);font-size:.84rem;color:var(--pink);margin-bottom:.35rem}
+  .md-preview-head h3{margin:0;font-size:1.18rem}
+  .md-preview-body{padding:1rem 1.1rem;overflow:auto}
+  .md-preview-body .md-empty{color:var(--muted);font-size:1rem;line-height:1.45}
+  .md-rendered{color:var(--muted);font-size:.94rem;line-height:1.46}
+  .md-rendered h1{font-size:1.5rem;line-height:1.1;margin:.1rem 0 .75rem;color:var(--ink);letter-spacing:-.02em}
+  .md-rendered h2{font-size:1.12rem;line-height:1.2;margin:1rem 0 .45rem;color:var(--ink);letter-spacing:0}
+  .md-rendered h3{font-size:1rem;line-height:1.2;margin:.85rem 0 .35rem;color:var(--ink)}
+  .md-rendered p{margin:.35rem 0;color:var(--muted)}
+  .md-rendered strong{color:var(--ink);font-weight:700}
+  .md-rendered ul{margin:.35rem 0 .55rem 1.2rem;padding:0}
+  .md-rendered li{margin:.22rem 0}
+  .md-rendered .md-hr{height:1px;background:var(--line);margin:.8rem 0}
+  .md-rendered .md-table-wrap{overflow:auto;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.035);margin:.55rem 0}
+  .md-rendered table{width:100%;border-collapse:collapse;font-size:.74rem;line-height:1.28;color:var(--muted)}
+  .md-rendered th{color:var(--ink);font-weight:700;background:rgba(139,92,246,.14);position:sticky;top:0}
+  .md-rendered th,.md-rendered td{border-bottom:1px solid var(--line);padding:.45rem .55rem;text-align:left;vertical-align:top}
+  .md-rendered tr:last-child td{border-bottom:0}
+  .small-print{color:var(--faint);font-size:.8rem;margin-top:.55rem;text-align:right}
+  .control-mock{display:grid;grid-template-columns:205px 1fr;gap:.8rem;min-height:360px;margin-top:.9rem;padding:.8rem;border:1px solid var(--line);border-radius:18px;background:var(--card)}
+  .control-side{display:grid;align-content:start;gap:.35rem;padding:.8rem;border:1px solid var(--line);border-radius:13px;background:var(--card-hi)}
+  .control-side strong{margin:.25rem .4rem .8rem;font-size:1.05rem}
+  .control-side span{padding:.62rem .75rem;border-radius:8px;color:var(--muted);font-size:.88rem}
+  .control-side span.active{background:rgba(139,92,246,.16);color:var(--violet);font-weight:700}
+  .control-main{display:grid;align-content:start;gap:.9rem}
+  .control-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:.65rem}
+  .control-kpis div{padding:.7rem .85rem;border:1px solid var(--line);border-radius:12px;background:var(--card-hi)}
+  .control-kpis b{display:block;font-size:1.45rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .control-kpis span{color:var(--muted);font-size:.78rem}
+  .queue-mock{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card-hi)}
+  .queue-row{display:grid;grid-template-columns:1fr 1.8fr .85fr .72fr;gap:.7rem;padding:.55rem .8rem;border-bottom:1px solid var(--line);font-size:.8rem;align-items:center}
+  .queue-row:last-child{border-bottom:0}
+  .queue-row.head{color:var(--faint);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+  .queue-row span{color:var(--muted)}
+  .queue-badge{display:inline-flex;width:fit-content;padding:.2rem .5rem;border-radius:999px;background:rgba(139,92,246,.16);color:var(--violet)!important;font-size:.72rem;font-weight:700}
+  .control-main>.grid .card{padding:.85rem 1rem}
+  .control-main>.grid .card h3{font-size:1.05rem}
+  .control-main>.grid .card p{font-size:.9rem;line-height:1.35}
+  .file-tree,
+  .md-preview-body,
+  .md-rendered .md-table-wrap,
+  .slide{
+    scrollbar-width:thin;
+    scrollbar-color:transparent transparent;
+  }
+  .file-tree:hover,
+  .md-preview-body:hover,
+  .md-rendered .md-table-wrap:hover,
+  .slide:hover,
+  .file-tree.is-scrolling,
+  .md-preview-body.is-scrolling,
+  .md-rendered .md-table-wrap.is-scrolling,
+  .slide.is-scrolling{
+    scrollbar-color:rgba(167,139,250,.42) transparent;
+  }
+  .file-tree::-webkit-scrollbar,
+  .md-preview-body::-webkit-scrollbar,
+  .md-rendered .md-table-wrap::-webkit-scrollbar,
+  .slide::-webkit-scrollbar{width:9px;height:9px}
+  .file-tree::-webkit-scrollbar-track,
+  .md-preview-body::-webkit-scrollbar-track,
+  .md-rendered .md-table-wrap::-webkit-scrollbar-track,
+  .slide::-webkit-scrollbar-track{background:transparent}
+  .file-tree::-webkit-scrollbar-thumb,
+  .md-preview-body::-webkit-scrollbar-thumb,
+  .md-rendered .md-table-wrap::-webkit-scrollbar-thumb,
+  .slide::-webkit-scrollbar-thumb{background:transparent;border-radius:999px;border:2px solid transparent;background-clip:content-box}
+  .file-tree:hover::-webkit-scrollbar-thumb,
+  .md-preview-body:hover::-webkit-scrollbar-thumb,
+  .md-rendered .md-table-wrap:hover::-webkit-scrollbar-thumb,
+  .slide:hover::-webkit-scrollbar-thumb,
+  .file-tree.is-scrolling::-webkit-scrollbar-thumb,
+  .md-preview-body.is-scrolling::-webkit-scrollbar-thumb,
+  .md-rendered .md-table-wrap.is-scrolling::-webkit-scrollbar-thumb,
+  .slide.is-scrolling::-webkit-scrollbar-thumb{background:rgba(167,139,250,.42);background-clip:content-box}
+
+  .timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.8rem}
+  .tl{border:1px solid var(--line);border-radius:16px;padding:1.45rem;background:var(--card)}
+  .tl .when{font-family:var(--mono);font-size:.92rem;color:var(--pink);letter-spacing:.04em}
+  .tl h3{margin:.5rem 0 .35rem}
+  .tl p{color:var(--muted);font-size:1.05rem;line-height:1.45}
+  .quote{border-left:3px solid var(--pink);padding-left:1.4rem;margin-top:1.7rem;max-width:860px}
+  .quote p{font-size:clamp(1.55rem,2.55vw,2.25rem);line-height:1.32;color:var(--ink)}
+  .quote footer{margin-top:1rem;color:var(--muted);font-size:1.08rem}
+  .progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:20;background:var(--grad);transition:width .5s ease}
+  .counter{position:fixed;left:2rem;bottom:1.5rem;z-index:20;font-family:var(--mono);font-size:.82rem;color:var(--faint)}
+  .counter b{color:var(--ink)}
+  .brand{position:fixed;left:2rem;top:1.3rem;z-index:20;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-weight:600;display:flex;align-items:center;gap:.55rem}
+  .brand .b-dot{width:8px;height:8px;border-radius:50%;background:var(--grad)}
+  .nav{position:fixed;right:2rem;bottom:1.4rem;z-index:20;display:flex;gap:.55rem}
+  .nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--ink);font-size:1.15rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.25s}
+  .nav button:hover{border-color:var(--violet);background:rgba(139,92,246,.16)}
+  .nav button:disabled{opacity:.3;cursor:default}
+  .theme-btn{position:fixed;top:1.15rem;right:2rem;z-index:20;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--ink);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.25s}
+  .theme-btn:hover{border-color:var(--violet);background:rgba(139,92,246,.16)}
+  .kick.c1{color:#34d399}.kick.c2{color:#22d3ee}.kick.c3{color:#a78bfa}.kick.c4{color:#f472b6}.kick.c5{color:#fb923c}
+  .plat .card.c1{border-top-color:#34d399}.plat .card.c2{border-top-color:#22d3ee}.plat .card.c3{border-top-color:#a78bfa}.plat .card.c4{border-top-color:#f472b6}.plat .card.c5{border-top-color:#fb923c}
+
+  @media(max-width:1080px){.g5{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:820px){
+    .g3,.g4,.timeline,.slide-map{grid-template-columns:repeat(2,1fr)}
+    .file-tree-wrap{grid-template-columns:1fr}
+    .control-mock{grid-template-columns:1fr;max-height:68vh;overflow:auto}
+    .control-kpis{grid-template-columns:repeat(2,1fr)}
+    .learning-grid{grid-template-columns:1fr}
+    .g2{grid-template-columns:1fr}
+    .slide{padding:8vh 7vw;overflow:auto}
+    .brand{display:none}
+  }
+  @media(max-width:640px){
+    .g3,.g4,.g5,.slide-map{grid-template-columns:1fr}
+    .loop{flex-direction:column}
+    .loop .arrow{transform:rotate(90deg)}
+  }
+</style>
+</head>
+<body>
+<div class="bg-glow"></div>
+<div class="progress" id="progress"></div>
+<div class="brand"><span class="b-dot"></span>Strategic Intelligence Operations · Enterprise Pattern</div>
+
+<div class="deck" id="deck">
+
+  <section class="slide title-slide active">
+    <div class="content">
+      <span class="eyebrow">Governed Agentic Operations · Solution Blueprint</span>
+      <h1>Strategic Intelligence <span class="grad">Operations</span></h1>
+      <p class="subtitle">From recurring research request to governed, self-running intelligence operation</p>
+      <div class="meta-row">
+        <span><span class="dot"></span>Orchestration: Modern Copilot Studio</span>
+        <span><span class="dot"></span>Control plane: Dataverse + workflows</span>
+        <span><span class="dot"></span>Working memory: SharePoint "second brain"</span>
+        <span><span class="dot"></span>UI: Managed app</span>
+      </div>
+      <div class="hint"><span class="key">←</span><span class="key">→</span> to navigate · <span class="key">Home</span> first slide · <span class="key">I</span> index · <span class="key">F</span> fullscreen · <span class="key">T</span> theme</div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="content">
+      <span class="eyebrow">The proposition</span>
+      <h2>What if the agent ran the intelligence operation—not just <span class="grad">the prompt?</span></h2>
+      <p class="lead">The target is not another generated answer. It is a repeatable operation that discovers evidence, makes routine decisions, produces cited reports and asks for human judgement only when accountability demands it.</p>
+      <div class="grid g4">
+        <div class="card"><div class="num-badge">1</div><h3>Discover</h3><p>Continuously retrieve current evidence from approved public and enterprise sources.</p></div>
+        <div class="card"><div class="num-badge">2</div><h3>Decide</h3><p>Assess relevance, confidence, materiality and the next bounded action.</p></div>
+        <div class="card"><div class="num-badge">3</div><h3>Report</h3><p>Generate cited Markdown and self-contained HTML drafts for review.</p></div>
+        <div class="card"><div class="num-badge">4</div><h3>Escalate</h3><p>Bring in a person only for ambiguity, consequence or accountable approval.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="content">
+      <span class="eyebrow">Start with one powerful report</span>
+      <h2>Competitive analysis shows the full <span class="grad">operating pattern</span></h2>
+      <p class="lead lead-sm">A recurring competitor brief needs current research, living profiles, evidence quality, complete coverage, report synthesis and accountable decisions about new competitors or uncertain conclusions.</p>
+      <div class="quote">
+        <p>“The agent does the work. The human makes only the decision the agent must not make.”</p>
+        <footer>Intelligence Operations design principle</footer>
+      </div>
+      <div class="callout"><span class="tag">Story point</span><p>Begin with one familiar report, then reveal that the same governed operating contract can run many intelligence domains.</p></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="content">
+      <span class="eyebrow">Design challenge</span>
+      <h2>Preserve agentic judgement, then add <span class="grad">enterprise controls</span></h2>
+      <div class="grid g2">
+        <div class="flow-panel challenge-panel">
+          <div class="ph" style="color:var(--blue)">What we needed to preserve</div>
+          <ul style="color:var(--muted);line-height:1.7;padding-left:1.2rem;margin-top:.4rem">
+            <li>High-quality reasoning and narrative synthesis</li>
+            <li>Flexible report scope and current research</li>
+            <li>Human-readable Markdown second brain</li>
+            <li>Domain and entity profiles that grow over time</li>
+            <li>Skills that encapsulate specialist work patterns</li>
+          </ul>
+        </div>
+        <div class="flow-panel challenge-panel" style="border-color:rgba(139,92,246,.35)">
+          <div class="ph" style="color:var(--violet)">What enterprise needed to add</div>
+          <ul style="color:var(--muted);line-height:1.7;padding-left:1.2rem;margin-top:.4rem">
+            <li>Run status and task-level audit</li>
+            <li>Approval gates for registry and report release</li>
+            <li>Coverage proof for every bounded work item</li>
+            <li>Self-healing retry and remediation paths</li>
+            <li>Dashboard oversight for operations and quality</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="content">
+      <span class="eyebrow">Target architecture</span>
+      <h2>Copilot Studio as orchestrator, SharePoint as second brain, Dataverse as <span class="grad">control plane</span></h2>
+      <div class="grid g3 plat">
+        <div class="card c1"><span class="kick c1">User-facing orchestration</span><h3>Modern Copilot Studio</h3><p>Routes skills, calls tools, uses reasoning, drafts analysis, asks for approval and returns review links.</p></div>
+        <div class="card c2"><span class="kick c2">Working memory</span><h3>SharePoint directory</h3><p>Registry, profiles, generated reports, suggestions, decisions, sessions and analyst material.</p></div>
+        <div class="card c3"><span class="kick c3">Operational memory</span><h3>Dataverse MCP</h3><p>Runs, work items, evidence, findings, output artefacts, registries and approvals.</p></div>
+        <div class="card c4"><span class="kick c4">Automation layer</span><h3>Workflow</h3><p>Processes row-triggered research tasks, checks completion and triggers report continuation.</p></div>
+        <div class="card c5"><span class="kick c5">Oversight surface</span><h3>Code App in Power Platform</h3><p>Run health, findings review, approvals, artefacts, registry and data quality exceptions.</p></div>
+        <div class="card c1"><span class="kick c1">Intelligence sources</span><h3>Approved tools</h3><p>Current web and enterprise research with source, date, query and run traceability.</p></div>
+      </div>
+      <div class="callout trust-callout"><span class="tag">Trust principle</span><p><strong>Trust is earned.</strong> In this design, trust comes from being able to validate, challenge, and question the agent’s results, sources, and reasoning at any point in the process.</p></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="content">
+      <span class="eyebrow">Detailed design</span>
+      <h2><span class="grad">Function-oriented research</span></h2>
+      <p class="diagram-subtitle">Key idea: MCS orchestrates; Workflows execute; Dataverse audits; SharePoint remembers; App oversees.</p>
+      <div class="diagram-frame">
+        <img src="intelligence-operations-architecture.svg" alt="Intelligence Operations architecture showing Modern Copilot Studio as orchestrator, Dataverse task queue, workflows, SharePoint second brain, research tools and Managed App." />
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="content">
+      <span class="eyebrow">End-to-end process</span>
+      <h2>From request to governed <span class="grad">report publication</span></h2>
+      <p class="diagram-subtitle">Three vertical phases show how the solution configures scope, executes bounded work, remediates unresolved research, synthesises outputs and introduces human judgement only at the approval boundary.</p>
+      <div class="diagram-frame">
+        <img class="zoomable-diagram" src="intelligence-operations-process-flow-3-column.svg" alt="Three-column Intelligence Operations process flow covering Plan and Configure, Execute and Remediate, and Synthesise Review and Publish." title="Click to enlarge" />
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="content">
+      <span class="eyebrow">Second brain</span>
+      <h2>SharePoint is the shared directory structure the agent can <span class="grad">read, write and improve</span></h2>
+      <div class="loop">
+        <div class="node"><div class="n-t">registries</div><div class="n-d">approved operating scope</div><div class="n-more">Source of truth for active domains, entities, sources and report templates.</div></div>
+        <div class="arrow">→</div>
+        <div class="node"><div class="n-t">profiles/*.md</div><div class="n-d">specialist grounding</div><div class="n-more">Durable context, aliases, constraints, priorities and known history for each domain, entity and source.</div></div>
+        <div class="arrow">→</div>
+        <div class="node"><div class="n-t">reports</div><div class="n-d">cited review artefacts</div><div class="n-more">Paired Markdown and HTML outputs with findings, implications, citations and residual uncertainty.</div></div>
+        <div class="arrow">→</div>
+        <div class="node"><div class="n-t">decisions + learned</div><div class="n-d">approved improvements</div><div class="n-more">Human-approved policy, registry and learned-context changes with traceable rationale.</div></div>
+      </div>
+      <div class="grid g2">
+        <div class="card"><h3>Human-readable by design</h3><p>Analysts can inspect the memory directly instead of relying on opaque chat history or hidden state.</p></div>
+        <div class="card"><h3>Agent-readable by path</h3><p>The agent can retrieve known files, create new artefacts, and use SharePoint version history for change traceability.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="content">
+      <span class="eyebrow">Second brain visibility</span>
+      <h2>What the agent’s <span class="grad">working memory</span> looks like</h2>
+      <div class="file-tree-wrap">
+        <div class="file-tree" aria-label="Second brain file tree">
+          <details open>
+            <summary><span class="folder">intelligence-operations/</span></summary>
+            <details open>
+              <summary><span class="folder">domains/</span></summary>
+              <button class="file" data-md-preview="registry">registry.md</button>
+              <details>
+                <summary><span class="folder">profiles/</span><span class="count">6 intelligence domains</span></summary>
+                <button class="file" data-md-preview="vodafone">competitive-intelligence.md</button>
+                <div class="file">market-and-customer-signals.md</div>
+                <div class="file">regulatory-policy.md</div>
+                <div class="file">account-and-stakeholder.md</div>
+                <div class="file">pmo-governance.md</div>
+                <div class="file">risk-and-incident.md</div>
+              </details>
+            </details>
+            <details open>
+              <summary><span class="folder">entities/</span></summary>
+              <div class="file">registry.md</div>
+              <div class="file">profiles/example-entity.md</div>
+            </details>
+            <details open>
+              <summary><span class="folder">sources/</span></summary>
+              <div class="file">registry.md</div>
+              <div class="file">profiles/public-web-approved.md</div>
+              <div class="file">profiles/sharepoint-templates.md</div>
+            </details>
+          <details open>
+            <summary><span class="folder">docs/</span></summary>
+            <details>
+                <summary><span class="folder">reports/</span><span class="count">Markdown + HTML pairs</span></summary>
+                <button class="file" data-md-preview="report0708">2026-10-20-intelligence-brief.md</button>
+                <div class="file">2026-10-20-intelligence-brief.html</div>
+                <div class="file">2026-10-13-intelligence-brief.md</div>
+              </details>
+              <details open>
+                <summary><span class="folder">learned/</span></summary>
+                <div class="file">context.md</div>
+                <button class="file" data-md-preview="searchImprovements">research-strategy-improvements.md</button>
+              </details>
+              <details>
+                <summary><span class="folder">architecture/</span></summary>
+                <div class="file">reference-architecture.md</div>
+                <div class="file">operating-model.md</div>
+                <div class="file">README.md</div>
+              </details>
+              <details>
+                <summary><span class="folder">decisions/</span></summary>
+                <div class="file">2026-10-20-source-policy.md</div>
+                <div class="file">OPEN-QUESTIONS.md</div>
+              </details>
+            </details>
+            <details open>
+              <summary><span class="folder">templates/</span></summary>
+              <div class="file">registry.md</div>
+              <div class="file">profiles/intelligence-brief.md</div>
+              <div class="file">html/layouts/intelligence-brief-html.md</div>
+            </details>
+            <div class="file">README.md</div>
+          </details>
+        </div>
+        <div class="md-preview" aria-live="polite">
+          <div class="md-preview-head">
+            <div class="path" id="mdPreviewPath">Click registry.md or competitive-intelligence.md</div>
+            <h3 id="mdPreviewTitle">Embedded Markdown preview</h3>
+          </div>
+          <div class="md-preview-body">
+            <div id="mdPreviewBody" class="md-empty">Select a file in the tree to preview an example from the generic Intelligence Operations second brain.</div>
+          </div>
+        </div>
+      </div>
+      <div class="small-print">Generic second-brain starter structure included in the solution package</div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="content">
+      <span class="eyebrow">One reusable operating contract</span>
+      <h2>Configure the domain. Keep the <span class="grad">operating pattern</span> fixed.</h2>
+      <p class="lead lead-sm">Every report follows the same traceable path from orchestration, to bounded work, to evidence, to synthesis, to accountable approval.</p>
+      <div class="grid g4">
+        <div class="card"><div class="num-badge">1</div><h3>Start the run</h3><p>Copilot Studio creates the run and reads the approved domain, entity, source and template registries.</p></div>
+        <div class="card"><div class="num-badge">2</div><h3>Inspect the queue</h3><p>Dataverse stores bounded work items with prompt, task type, retry count and status.</p></div>
+        <div class="card"><div class="num-badge">3</div><h3>Watch execution</h3><p>Workflows process work independently and preserve evidence, findings and worker context.</p></div>
+        <div class="card"><div class="num-badge">4</div><h3>Review outputs</h3><p>SharePoint holds cited reports; the Control Center shows run health, findings and approvals.</p></div>
+      </div>
+      <div class="callout"><span class="tag">Demo message</span><p>This is where trust becomes visible: every result can be questioned through its task status, source evidence, workflow outcome and approval trail.</p></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="content">
+      <span class="eyebrow">Execution pattern</span>
+      <h2>Single-session execution vs <span class="grad">resilient function-oriented orchestration</span></h2>
+      <div class="learning-grid">
+        <div class="learning-card">
+          <div class="ph" style="color:var(--pink)">Single-run pattern</div>
+          <h3>One long conversation carries the whole operation</h3>
+          <ul>
+            <li>Research, evaluation and drafting compete for the same execution context.</li>
+            <li>One source, tool or reasoning failure can compromise the whole report.</li>
+            <li>Coverage becomes difficult to prove as the entity list grows.</li>
+            <li>Retries repeat too much work and provide weak operational visibility.</li>
+            <li>Human intervention becomes process supervision rather than decision governance.</li>
+          </ul>
+        </div>
+        <div class="learning-card">
+          <div class="ph" style="color:var(--blue)">Intelligence Operations pattern</div>
+          <h3>Copilot Studio orchestrates bounded, auditable work</h3>
+          <ul>
+            <li>The agent creates individual <strong>IO Work Item</strong> records in Dataverse.</li>
+            <li>Workflows trigger queued and remediating rows independently.</li>
+            <li>Each task writes evidence, findings, status, retry and audit context.</li>
+            <li>Unresolved work automatically remediates before human escalation.</li>
+            <li>Attempts one and two cannot select Needs Review prematurely.</li>
+            <li>Synthesis starts only when every report work item is terminal.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="learning-callout">
+        <p><strong>Lesson:</strong> the enterprise pattern is not “make one smarter prompt.” It is to decompose the work into auditable functions, let the platform process them independently, and give the solution enough status, retries, and reasoning to self-heal when something goes wrong.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="content">
+      <span class="eyebrow">Operational visibility</span>
+      <h2>A control plane for audit, review, remediation and <span class="grad">approval</span></h2>
+      <p class="diagram-subtitle">The Power Apps Code App makes the agent’s operational state visible and gives reviewers governed actions without exposing implementation complexity.</p>
+      <div class="control-mock">
+        <div class="control-side">
+          <strong>Control Center</strong>
+          <span>Operations overview</span>
+          <span>Runs</span>
+          <span class="active">Work queue</span>
+          <span>Evidence & findings</span>
+          <span>Output review</span>
+          <span>Approvals</span>
+          <span>Registries</span>
+        </div>
+        <div class="control-main">
+          <div class="control-kpis">
+            <div><b>12</b><span>Active runs</span></div>
+            <div><b>38</b><span>Work items</span></div>
+            <div><b>3</b><span>Needs remediation</span></div>
+            <div><b>2</b><span>Pending decisions</span></div>
+          </div>
+          <div class="queue-mock">
+            <div class="queue-row head"><span>Work item</span><span>Input / output</span><span>Context</span><span>Status</span></div>
+            <div class="queue-row"><strong>WI-1042</strong><span>Assess a material competitor move and preserve evidence…</span><span>Competitive · Retry 0</span><span class="queue-badge">Completed</span></div>
+            <div class="queue-row"><strong>WI-1043</strong><span>Validate policy applicability across operating markets…</span><span>Regulatory · Retry 2</span><span class="queue-badge">Remediation</span></div>
+            <div class="queue-row"><strong>WI-1044</strong><span>Resolve conflicting incident timelines and implications…</span><span>Risk · Retry 3</span><span class="queue-badge">Needs Review</span></div>
+            <div class="queue-row"><strong>WI-1045</strong><span>Summarise stakeholder changes and account impact…</span><span>Account · Retry 0</span><span class="queue-badge">In Progress</span></div>
+          </div>
+          <div class="grid g3" style="margin-top:0">
+            <div class="card"><span class="kick c1">Evidence</span><h3>Trace every claim</h3><p>Inspect source, excerpt, credibility, retrieval date and linked findings.</p></div>
+            <div class="card"><span class="kick c3">Actions</span><h3>Govern state changes</h3><p>Requeue, remediate, complete or skip with explicit confirmation and audit.</p></div>
+            <div class="card"><span class="kick c4">Decisions</span><h3>Review what matters</h3><p>Approve outputs, registry changes and unresolved human-judgement items.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="content">
+      <span class="eyebrow">Enterprise guardrails</span>
+      <h2>Enterprise readiness is a <span class="grad">set of gates</span></h2>
+      <div class="grid g4">
+        <div class="card"><div class="ic">E</div><h3>Evidence gate</h3><p>No source URL, source title, source date, retrieval date and query log means no report finding.</p></div>
+        <div class="card"><div class="ic">C</div><h3>Coverage gate</h3><p>Every work item needs an explicit completed, no-activity, review, skipped or failed outcome.</p></div>
+        <div class="card"><div class="ic">D</div><h3>Delta gate</h3><p>Findings are compared with prior reports and profiles before becoming New or Update.</p></div>
+        <div class="card"><div class="ic">A</div><h3>Approval gate</h3><p>New entities, sources, learned context and publication are approved before application.</p></div>
+      </div>
+      <div class="callout"><span class="tag">Differentiator</span><p>The agent can be self-expanding, but only through controlled approvals, profile creation, registry updates and Dataverse lifecycle state.</p></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="content">
+      <span class="eyebrow">Big differentiators</span>
+      <h2>What makes this more than another <span class="grad">generated report</span></h2>
+      <div class="grid g3">
+        <div class="card"><div class="stat-num g">Taskable</div><p>Research is decomposed into independent units, so one issue does not collapse the whole report run.</p></div>
+        <div class="card"><div class="stat-num g">Auditable</div><p>Each run has work items, evidence, findings, artefacts, approvals and SharePoint version history.</p></div>
+        <div class="card"><div class="stat-num g">Evolvable</div><p>The system can propose new entities, sources, domains and profile updates without bypassing human control.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="content">
+      <span class="eyebrow">Scale across use cases</span>
+      <h2>One operating model supports <span class="grad">six intelligence domains</span></h2>
+      <div class="timeline">
+        <div class="tl"><div class="when">Domain 01–02</div><h3>Competitive + market</h3><p>Competitor briefs, battlecards, market signal digests and customer-theme monitoring.</p></div>
+        <div class="tl"><div class="when">Domain 03–04</div><h3>Regulatory + account</h3><p>Policy impact briefs, account intelligence and stakeholder change monitoring.</p></div>
+        <div class="tl"><div class="when">Domain 05–06</div><h3>PMO + risk</h3><p>Status reports, governance artefacts, incident situation briefs and executive updates.</p></div>
+      </div>
+      <div class="callout"><span class="tag">Scaling principle</span><p>Change registries, profiles, sources and templates. Keep the core orchestration, work-item lifecycle, evidence model and approval contract fixed.</p></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="content">
+      <span class="eyebrow">Human in the loop</span>
+      <h2>The agent works until it reaches a decision <span class="grad">only a person should make</span></h2>
+      <div class="grid g3">
+        <div class="card"><span class="kick c1">Agent decides</span><h3>Routine judgement</h3><p>Search strategy, evidence relevance, finding type, confidence, materiality, retries and report structure.</p></div>
+        <div class="card"><span class="kick c2">Workflow enforces</span><h3>Deterministic policy</h3><p>Trigger scope, status transitions, retry limits, terminal counts and synthesis continuation.</p></div>
+        <div class="card"><span class="kick c4">Human decides</span><h3>Consequential judgement</h3><p>Unresolved ambiguity, new registry entries, sensitive conclusions, durable learning and publication.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="content">
+      <span class="eyebrow">The outcome</span>
+      <h2>A reusable pattern for governed <span class="grad">agentic operations</span></h2>
+      <p class="lead">Any recurring knowledge-work process that needs current research, shared memory, source evidence, approvals, audit and human review can use the same design.</p>
+      <div class="grid g3">
+        <div class="card"><h3>Reusable</h3><p>New domains are configured through registries, profiles and templates—not rebuilt from scratch.</p></div>
+        <div class="card"><h3>Composable</h3><p>Copilot Studio, Dataverse, workflows, SharePoint and Power Apps each own a clear responsibility.</p></div>
+        <div class="card"><h3>Governed</h3><p>Evidence, remediation, approvals, audit and human decision boundaries are part of the runtime.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" id="slide-index">
+    <div class="content">
+      <span class="eyebrow">Navigation</span>
+      <h2>Jump to any part of the <span class="grad">story</span></h2>
+      <p class="lead lead-sm">Use this as a table of contents during discussion. Click any tile to move directly to that slide, then use the Index button to come back.</p>
+      <div class="slide-map">
+        <button class="jump-tile" data-slide="0"><span class="jump-num">01</span><span class="jump-title">Title</span><span class="jump-desc">Strategic Intelligence Operations enterprise pattern.</span></button>
+        <button class="jump-tile" data-slide="1"><span class="jump-num">02</span><span class="jump-title">The proposition</span><span class="jump-desc">From prompt to self-running operation.</span></button>
+        <button class="jump-tile" data-slide="2"><span class="jump-num">03</span><span class="jump-title">One powerful report</span><span class="jump-desc">Competitive analysis as the opening story.</span></button>
+        <button class="jump-tile" data-slide="3"><span class="jump-num">04</span><span class="jump-title">Design challenge</span><span class="jump-desc">What to preserve and what enterprise adds.</span></button>
+        <button class="jump-tile" data-slide="4"><span class="jump-num">05</span><span class="jump-title">Target architecture</span><span class="jump-desc">Modern Copilot Studio, SharePoint and Dataverse.</span></button>
+        <button class="jump-tile" data-slide="5"><span class="jump-num">06</span><span class="jump-title">Detailed design</span><span class="jump-desc">Generic Intelligence Operations architecture.</span></button>
+        <button class="jump-tile" data-slide="6"><span class="jump-num">07</span><span class="jump-title">Process flow</span><span class="jump-desc">Plan, execute, remediate, review and publish.</span></button>
+        <button class="jump-tile" data-slide="7"><span class="jump-num">08</span><span class="jump-title">Second brain</span><span class="jump-desc">Registries, profiles, reports and decisions.</span></button>
+        <button class="jump-tile" data-slide="8"><span class="jump-num">09</span><span class="jump-title">File structure</span><span class="jump-desc">Embedded second-brain visibility.</span></button>
+        <button class="jump-tile" data-slide="9"><span class="jump-num">10</span><span class="jump-title">Operating contract</span><span class="jump-desc">The reusable run lifecycle.</span></button>
+        <button class="jump-tile" data-slide="10"><span class="jump-num">11</span><span class="jump-title">Execution pattern</span><span class="jump-desc">From one big run to task orchestration.</span></button>
+        <button class="jump-tile" data-slide="11"><span class="jump-num">12</span><span class="jump-title">Control Center</span><span class="jump-desc">Operational visibility and governed actions.</span></button>
+        <button class="jump-tile" data-slide="12"><span class="jump-num">13</span><span class="jump-title">Guardrails</span><span class="jump-desc">Evidence, coverage, delta and approval gates.</span></button>
+        <button class="jump-tile" data-slide="13"><span class="jump-num">14</span><span class="jump-title">Differentiators</span><span class="jump-desc">Taskable, auditable and evolvable.</span></button>
+        <button class="jump-tile" data-slide="14"><span class="jump-num">15</span><span class="jump-title">Six domains</span><span class="jump-desc">Scale through configuration, not cloning.</span></button>
+        <button class="jump-tile" data-slide="15"><span class="jump-num">16</span><span class="jump-title">Human decisions</span><span class="jump-desc">The true accountability boundary.</span></button>
+        <button class="jump-tile" data-slide="16"><span class="jump-num">17</span><span class="jump-title">Outcome</span><span class="jump-desc">Reusable governed agentic operations.</span></button>
+        <button class="jump-tile" data-slide="18"><span class="jump-num">19</span><span class="jump-title">Requirements</span><span class="jump-desc">Technology, licensing, security and DLP.</span></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="content">
+      <span class="eyebrow">Implementation requirements</span>
+      <h2>Platform, licensing, security and <span class="grad">DLP prerequisites</span></h2>
+      <div class="grid g4">
+        <div class="card"><span class="kick c1">Platform</span><h3>Power Platform environment</h3><p>Dataverse-enabled environment; modern Copilot Studio with native Workflows available; Power Apps code apps enabled; SharePoint second-brain site; managed-solution deployment with connection references and environment variables.</p></div>
+        <div class="card"><span class="kick c2">Licensing</span><h3>Runtime entitlements</h3><p>Copilot Studio capacity through Copilot Credits or PAYG; Power Apps Premium for Control Center users; Microsoft 365 licensing for SharePoint, Teams and Exchange features used; connector-specific licensing where applicable.</p></div>
+        <div class="card"><span class="kick c3">Security</span><h3>Identity and access</h3><p>Environment Maker/System Customizer for installation; least-privilege Dataverse roles for users and service accounts; SharePoint folder permissions; approved connector connections; Teams and mailbox permissions only when delivery is enabled.</p></div>
+        <div class="card"><span class="kick c4">DLP</span><h3>Connector policy</h3><p>Dataverse, SharePoint, Copilot Studio and Power Apps allowed in the same Business data group. Outlook and Teams must also be allowed for delivery. RSS, HTTP and custom connectors require explicit approval and endpoint controls.</p></div>
+      </div>
+      <div class="callout"><span class="tag">Admin validation required</span><p>Confirm regional availability and tenant policy for MCP tools, generative orchestration, public-web access and code apps. DLP must not mix Business and Non-Business connectors in one workflow. External feeds, APIs and publisher content require separate licences and approved credentials; the solution does not bypass source-access controls.</p></div>
+    </div>
+  </section>
+
+</div>
+
+<div class="diagram-lightbox" id="diagramLightbox" aria-hidden="true" role="dialog" aria-label="Expanded process diagram">
+  <img id="diagramLightboxImage" alt="" />
+</div>
+
+<div class="counter"><b id="cur">01</b> / <span id="tot">16</span></div>
+<button class="theme-btn" id="theme" aria-label="Toggle theme" title="Toggle light/dark (T)">☀</button>
+<div class="nav">
+  <button id="home" aria-label="First slide" title="First slide">⌂</button>
+  <button id="index" aria-label="Slide index" title="Slide index">☷</button>
+  <button id="prev" aria-label="Previous slide">‹</button>
+  <button id="next" aria-label="Next slide">›</button>
+</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  const indexSlide = slides.findIndex(slide => slide.id === 'slide-index');
+  let i = 0;
+  const prog = document.getElementById('progress');
+  const cur = document.getElementById('cur');
+  const tot = document.getElementById('tot');
+  const homeBtn = document.getElementById('home');
+  const indexBtn = document.getElementById('index');
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
+  const pad = n => String(n).padStart(2,'0');
+  tot.textContent = pad(total);
+
+  const root = document.documentElement;
+  const themeBtn = document.getElementById('theme');
+  let userSet = false;
+  function applyTheme(t){
+    root.setAttribute('data-theme', t);
+    themeBtn.textContent = t==='dark' ? '☀' : '☾';
+    themeBtn.setAttribute('aria-label', t==='dark' ? 'Switch to light theme' : 'Switch to dark theme');
+  }
+  applyTheme('dark');
+  themeBtn.addEventListener('click', ()=>{ userSet=true; applyTheme(root.getAttribute('data-theme')==='dark'?'light':'dark'); });
+
+  function show(n, push){
+    i = Math.max(0, Math.min(total-1, n));
+    slides.forEach((s,idx)=>s.classList.toggle('active', idx===i));
+    prog.style.width = ((i+1)/total*100) + '%';
+    cur.textContent = pad(i+1);
+    prevBtn.disabled = i===0;
+    nextBtn.disabled = i===total-1;
+    if(push!==false){ try{ history.replaceState(null,'','#'+(i+1)); }catch(e){} }
+  }
+  const next = ()=>show(i+1);
+  const prev = ()=>show(i-1);
+
+  document.addEventListener('keydown', e=>{
+    switch(e.key){
+      case 'ArrowRight': case 'PageDown': case ' ': case 'Spacebar':
+        e.preventDefault(); next(); break;
+      case 'ArrowLeft': case 'PageUp':
+        e.preventDefault(); prev(); break;
+      case 'Home': e.preventDefault(); show(0); break;
+      case 'i': case 'I': e.preventDefault(); show(indexSlide); break;
+      case 'End': e.preventDefault(); show(total-1); break;
+      case 'f': case 'F':
+        if(!document.fullscreenElement){ document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); }
+        else { document.exitFullscreen && document.exitFullscreen(); }
+        break;
+      case 't': case 'T':
+        userSet=true; applyTheme(root.getAttribute('data-theme')==='dark'?'light':'dark'); break;
+    }
+  });
+  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', prev);
+  homeBtn.addEventListener('click', ()=>show(0));
+  indexBtn.addEventListener('click', ()=>show(indexSlide));
+  document.querySelectorAll('.jump-tile').forEach(btn=>{
+    btn.addEventListener('click', ()=>show(Number(btn.dataset.slide || 0)));
+  });
+
+  const diagramLightbox = document.getElementById('diagramLightbox');
+  const diagramLightboxImage = document.getElementById('diagramLightboxImage');
+  function closeDiagramLightbox(){
+    diagramLightbox.classList.remove('open');
+    diagramLightbox.setAttribute('aria-hidden','true');
+    diagramLightboxImage.removeAttribute('src');
+  }
+  document.querySelectorAll('.zoomable-diagram').forEach(image=>{
+    image.setAttribute('tabindex','0');
+    image.setAttribute('role','button');
+    image.setAttribute('aria-label',`${image.alt} Click to enlarge.`);
+    const open = ()=>{
+      diagramLightboxImage.src = image.src;
+      diagramLightboxImage.alt = image.alt;
+      diagramLightbox.classList.add('open');
+      diagramLightbox.setAttribute('aria-hidden','false');
+    };
+    image.addEventListener('click',open);
+    image.addEventListener('keydown',event=>{
+      if(event.key==='Enter' || event.key===' '){event.preventDefault();open();}
+    });
+  });
+  diagramLightbox.addEventListener('click',closeDiagramLightbox);
+  document.addEventListener('keydown',event=>{
+    if(event.key==='Escape' && diagramLightbox.classList.contains('open')) closeDiagramLightbox();
+  });
+
+  const mdPreviews = {
+    registry: {
+      path: 'domains/registry.md',
+      title: 'Domain Registry',
+      body: `# Intelligence Domain Registry
+
+Last reviewed: 2026-10-20
+
+| Domain | Purpose | Default template | Status |
+|---|---|---|---|
+| Competitive intelligence | Track material competitor moves and implications | Weekly competitor brief | Active |
+| Market and customer signals | Monitor demand, category and customer themes | Market signal digest | Active |
+| Regulatory policy | Track policy change, applicability and required action | Regulatory impact brief | Active |
+| Account and stakeholder | Prepare account and stakeholder intelligence | Account brief | Active |
+| PMO governance | Draft programme governance artefacts | PMO status report | Active |
+| Risk and incident | Produce evidence-led situation updates | Incident situation brief | Active |
+
+## Governance
+
+New domains are proposed by the agent but become active only after approval and profile creation.`
+    },
+    vodafone: {
+      path: 'domains/profiles/competitive-intelligence.md',
+      title: 'Competitive Intelligence profile',
+      body: `# Competitive Intelligence
+
+**Purpose:** Track material competitor moves and explain strategic implications.
+**Default cadence:** Weekly
+**Default template:** Competitor Weekly Brief
+
+## Agent may decide
+
+- Search strategy and approved-source selection
+- Evidence relevance and confidence
+- New versus update classification
+- Materiality and report placement
+- Remediation approach for incomplete research
+
+## Human approval required
+
+- Adding a new tracked competitor
+- Accepting unresolved ambiguity after three attempts
+- Persisting learned context
+- Publishing externally
+
+## Evidence policy
+
+Prefer primary sources. Corroborate material secondary-source claims and preserve citation metadata.`
+    },
+    report0708: {
+      path: 'docs/reports/2026-10-20-intelligence-brief.md',
+      title: 'Intelligence Brief - 2026-10-20',
+      body: `# Intelligence Brief - 2026-10-20
+
+Status: Review Required
+Reporting period: 2026-09-20 to 2026-10-20
+Total findings: 4
+
+## Executive summary
+
+Three material signals are sufficiently supported for synthesis. One remains ambiguous after three bounded research attempts and requires human review.
+
+## Material findings
+
+| Finding | Confidence | Implication | Status |
+|---|---|---|---|
+| Market structure is shifting toward integrated propositions | High | Reassess positioning and partner dependencies | Ready for synthesis |
+| Regulatory requirements are moving from guidance to enforcement | Medium | Validate applicability and timing | Ready for synthesis |
+| Customer buying criteria increasingly combine cost and resilience | High | Update account and product narratives | Ready for synthesis |
+| Conflicting evidence on implementation timing | Low | Human judgement required | Needs Review |
+
+## Coverage
+
+| Work item | Result | Attempts |
+|---|---|---|
+| Research approved entities | Completed | 1 |
+| Validate primary sources | Completed | 2 |
+| Resolve timing ambiguity | Needs Review | 3 |
+
+## Decision required
+
+Determine whether the remaining uncertainty is acceptable for the review draft or whether the finding should be excluded.
+
+## Evidence
+
+Every finding is linked to evidence records with source, date, retrieval context and confidence.`
+    },
+    searchImprovements: {
+      path: 'docs/learned/research-strategy-improvements.md',
+      title: 'Research strategy improvements',
+      body: `# Research Strategy Improvements
+
+Recorded by: Intelligence Operations Agent
+Status: Approved learned context
+
+## What happened
+
+A prior run produced incomplete evidence for one material question. Repeating the same prompt did not improve the result.
+
+## Approved remediation strategy
+
+### Attempt 1
+
+- Expand aliases and approved source coverage.
+- Search for alternative formulations of the claim.
+
+### Attempt 2
+
+- Prioritise primary sources.
+- Triangulate conflicting dates and assertions.
+- Use accumulated worker notes as context.
+
+### Attempt 3
+
+- Narrow to the smallest supportable conclusion.
+- Record residual uncertainty explicitly.
+- Escalate usable ambiguity to Needs Review.
+- Mark unusable evidence or technical failure as Failed.
+
+## Rule that must not change
+
+Needs Review is a human decision boundary. Attempts one and two must use Needs Remediation for unresolved but retryable research.`
+    }
+  };
+
+  function showMdPreview(key){
+    const item = mdPreviews[key];
+    if(!item) return;
+    document.getElementById('mdPreviewPath').textContent = item.path;
+    document.getElementById('mdPreviewTitle').textContent = item.title;
+    const body = document.getElementById('mdPreviewBody');
+    body.className = 'md-rendered';
+    body.innerHTML = renderMarkdownLite(item.body);
+    document.querySelectorAll('[data-md-preview]').forEach(btn=>btn.classList.toggle('active', btn.dataset.mdPreview === key));
+  }
+
+  function escapeHtml(value){
+    return value.replace(/[&<>"']/g, char => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    }[char]));
+  }
+
+  function inlineMarkdown(value){
+    return escapeHtml(value)
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/`([^`]+)`/g, '<code>$1</code>');
+  }
+
+  function renderMarkdownLite(markdown){
+    const lines = markdown.split('\n');
+    const html = [];
+    let inList = false;
+    let table = [];
+    const closeList = () => {
+      if(inList){ html.push('</ul>'); inList = false; }
+    };
+    const flushTable = () => {
+      if(table.length){
+        closeList();
+        html.push(renderPipeTable(table));
+        table = [];
+      }
+    };
+
+    for(const line of lines){
+      if(line.trim().startsWith('|')){
+        table.push(line);
+        continue;
+      }
+      flushTable();
+      if(line.startsWith('# ')){
+        closeList();
+        html.push(`<h1>${inlineMarkdown(line.slice(2))}</h1>`);
+      } else if(line.startsWith('## ')){
+        closeList();
+        html.push(`<h2>${inlineMarkdown(line.slice(3))}</h2>`);
+      } else if(line.startsWith('### ')){
+        closeList();
+        html.push(`<h3>${inlineMarkdown(line.slice(4))}</h3>`);
+      } else if(line.trim() === '---'){
+        closeList();
+        html.push('<div class="md-hr"></div>');
+      } else if(line.startsWith('- ')){
+        if(!inList){ html.push('<ul>'); inList = true; }
+        html.push(`<li>${inlineMarkdown(line.slice(2))}</li>`);
+      } else if(line.trim() === ''){
+        closeList();
+      } else {
+        closeList();
+        html.push(`<p>${inlineMarkdown(line)}</p>`);
+      }
+    }
+    flushTable();
+    closeList();
+    return html.join('');
+  }
+
+  function renderPipeTable(rows){
+    const parsed = rows
+      .map(row => row.trim())
+      .filter(row => row.startsWith('|') && row.endsWith('|'))
+      .map(row => row.slice(1, -1).split('|').map(cell => cell.trim()));
+    if(parsed.length < 2){
+      return `<div class="md-table-wrap"><table><tbody>${parsed.map(row => `<tr>${row.map(cell => `<td>${inlineMarkdown(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+    }
+    const separatorIndex = parsed.findIndex(row => row.every(cell => /^:?-{3,}:?$/.test(cell)));
+    const header = parsed[0] || [];
+    const bodyRows = parsed.filter((_, index) => index !== 0 && index !== separatorIndex);
+    return `<div class="md-table-wrap"><table><thead><tr>${header.map(cell => `<th>${inlineMarkdown(cell)}</th>`).join('')}</tr></thead><tbody>${bodyRows.map(row => `<tr>${row.map(cell => `<td>${inlineMarkdown(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  }
+  document.querySelectorAll('[data-md-preview]').forEach(btn=>{
+    btn.addEventListener('click', ()=>showMdPreview(btn.dataset.mdPreview));
+  });
+
+  const scrollTimers = new WeakMap();
+  function attachSubtleScrollbars(rootNode = document){
+    rootNode.querySelectorAll('.file-tree, .md-preview-body, .md-table-wrap, .slide').forEach(el => {
+      if(el.dataset.scrollUiAttached) return;
+      el.dataset.scrollUiAttached = 'true';
+      el.addEventListener('scroll', () => {
+        el.classList.add('is-scrolling');
+        clearTimeout(scrollTimers.get(el));
+        scrollTimers.set(el, setTimeout(() => el.classList.remove('is-scrolling'), 900));
+      }, { passive: true });
+    });
+  }
+  attachSubtleScrollbars();
+
+  let tx=0;
+  addEventListener('touchstart', e=>{ tx = e.changedTouches[0].clientX; }, {passive:true});
+  addEventListener('touchend', e=>{
+    const dx = e.changedTouches[0].clientX - tx;
+    if(Math.abs(dx) > 50){ dx < 0 ? next() : prev(); }
+  }, {passive:true});
+
+  const start = parseInt((location.hash||'').replace('#',''),10);
+  show(Number.isFinite(start) && start>=1 ? start-1 : 0, false);
+</script>
+</body>
+</html>

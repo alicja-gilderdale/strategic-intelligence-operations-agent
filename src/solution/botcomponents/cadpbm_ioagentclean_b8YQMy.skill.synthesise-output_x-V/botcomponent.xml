@@ -1,0 +1,11 @@
+<botcomponent schemaname="cadpbm_ioagentclean_b8YQMy.skill.synthesise-output_x-V">
+  <componenttype>9</componenttype>
+  <description>Create a cited intelligence output from completed work items, using IO Findings, IO Evidence Sources and the template profile. Creates an IO Output Artifact in Review Required state.</description>
+  <iscustomizable>0</iscustomizable>
+  <name>synthesise-output</name>
+  <parentbotid>
+    <schemaname>cadpbm_ioagentclean_b8YQMy</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

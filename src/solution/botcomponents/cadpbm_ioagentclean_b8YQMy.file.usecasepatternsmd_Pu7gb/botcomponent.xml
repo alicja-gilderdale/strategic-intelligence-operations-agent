@@ -1,0 +1,12 @@
+<botcomponent schemaname="cadpbm_ioagentclean_b8YQMy.file.usecasepatternsmd_Pu7gb">
+  <componenttype>14</componenttype>
+  <description>This knowledge source searches information contained in use_case_patterns.md</description>
+  <filedata mimetype="application/octet-stream">use_case_patterns.md</filedata>
+  <iscustomizable>0</iscustomizable>
+  <name>use_case_patterns.md</name>
+  <parentbotid>
+    <schemaname>cadpbm_ioagentclean_b8YQMy</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

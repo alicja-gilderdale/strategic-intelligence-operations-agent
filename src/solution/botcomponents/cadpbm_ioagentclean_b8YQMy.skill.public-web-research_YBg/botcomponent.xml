@@ -1,0 +1,11 @@
+<botcomponent schemaname="cadpbm_ioagentclean_b8YQMy.skill.public-web-research_YBg">
+  <componenttype>9</componenttype>
+  <description>Worker-only guidance for latest public web signals and domain-aware discovery. The orchestrator uses this only to create bounded IO Work Item prompts; it must not run live research itself.</description>
+  <iscustomizable>0</iscustomizable>
+  <name>public-web-research</name>
+  <parentbotid>
+    <schemaname>cadpbm_ioagentclean_b8YQMy</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

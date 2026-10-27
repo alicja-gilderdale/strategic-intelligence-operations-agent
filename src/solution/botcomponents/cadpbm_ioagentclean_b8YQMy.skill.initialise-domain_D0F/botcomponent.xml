@@ -1,0 +1,11 @@
+<botcomponent schemaname="cadpbm_ioagentclean_b8YQMy.skill.initialise-domain_D0F">
+  <componenttype>9</componenttype>
+  <description>Create a new intelligence domain from a domain pattern (competitor, market/customer, regulatory/policy, account/stakeholder, PMO governance, or risk/incident), with starter registries and governance files.</description>
+  <iscustomizable>0</iscustomizable>
+  <name>initialise-domain</name>
+  <parentbotid>
+    <schemaname>cadpbm_ioagentclean_b8YQMy</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

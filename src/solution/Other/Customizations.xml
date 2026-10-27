@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ImportExportXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26102.118" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26102.00118">
+  <Entities />
+  <Roles />
+  <Workflows />
+  <FieldSecurityProfiles />
+  <Templates />
+  <EntityMaps />
+  <EntityRelationships />
+  <OrganizationSettings />
+  <optionsets />
+  <CustomControls />
+  <EntityDataProviders />
+  <CanvasApps />
+  <connectionreferences>
+    <connectionreference connectionreferencelogicalname="cadpbm_aireportingagent_-WcsR2.cr.shared_commondataserviceforapps.711c8b00cbff46d6b3a999900c218db1">
+      <connectionreferencedisplayname>IO Workflow DV Connection</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps</connectorid>
+      <iscustomizable>0</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="cadpbm_aireportingagent_-WcsR2.cr.shared_workiqsharepoint.18255c78b70f4124bfa3dbce09a1d282">
+      <connectionreferencedisplayname>IO Workflow SPO Connection</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_workiqsharepoint</connectorid>
+      <iscustomizable>0</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="cadpbm_ioagentclean_b8YQMy.cr.shared_commondataserviceforapps.711c8b00cbff46d6b3a999900c218db1">
+      <connectionreferencedisplayname>IO Dataverse MCP Connection</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps</connectorid>
+      <iscustomizable>0</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="cadpbm_ioagentclean_b8YQMy.cr.shared_workiqsharepoint.18255c78b70f4124bfa3dbce09a1d282">
+      <connectionreferencedisplayname>IO SharePoint MCP Connection</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_workiqsharepoint</connectorid>
+      <iscustomizable>0</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="cr652_competitoranalystreporting_ZyQnbW.cr.shared_commondataser.fc60acb-1adc-4821-8589-cabbd6b9a4c7">
+      <connectionreferencedisplayname>IO Workflow DV Connection 1</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps</connectorid>
+      <iscustomizable>0</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="new_sharedagentnode_2deec84f">
+      <connectionreferencedisplayname>Agent</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_agentnode</connectorid>
+      <iscustomizable>1</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+  </connectionreferences>
+  <Languages>
+    <Language>1033</Language>
+  </Languages>
+</ImportExportXml>

@@ -1,0 +1,6 @@
+* text=auto
+
+# Preserve generated Power Platform source byte-for-byte.
+src/solution/** -text
+
+*.md text eol=lf

@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 720" role="img" aria-labelledby="title desc">
+  <title id="title">Strategic Intelligence Operations architecture</title>
+  <desc id="desc">Strategic Intelligence Operations architecture with Copilot Studio orchestration, Dataverse control plane, workflows, SharePoint second brain, research tools and managed app oversight.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#a78bfa"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000000" flood-opacity="0.25"/>
+    </filter>
+    <style>
+      .bg{fill:#0b0b12}
+      .core{fill:rgba(59,130,246,.12);stroke:#60a5fa;stroke-width:2.5;rx:22;filter:url(#shadow)}
+      .dv{fill:rgba(167,139,250,.13);stroke:#a78bfa;stroke-width:2.5;rx:20}
+      .sp{fill:rgba(34,211,238,.11);stroke:#22d3ee;stroke-width:2.5;rx:20}
+      .wf{fill:rgba(244,114,182,.11);stroke:#f472b6;stroke-width:2.5;rx:20}
+      .app{fill:rgba(52,211,153,.11);stroke:#34d399;stroke-width:2.5;rx:20}
+      .note{fill:rgba(251,146,60,.12);stroke:#fb923c;stroke-width:2;rx:18}
+      .user{fill:rgba(255,255,255,.055);stroke:rgba(255,255,255,.18);stroke-width:2;rx:18}
+      .h{font:700 23px 'Segoe UI',Arial,sans-serif;fill:#ffffff}
+      .t{font:500 17px 'Segoe UI',Arial,sans-serif;fill:#d7d7df}
+      .s{font:700 13px 'Segoe UI',Arial,sans-serif;fill:#a6a6b4;letter-spacing:.08em}
+      .mono{font:650 16px Consolas,monospace;fill:#f5f5f8}
+      .arrow{stroke:#a78bfa;stroke-width:3;fill:none;marker-end:url(#arrow)}
+      .arrow2{stroke:#60a5fa;stroke-width:2.5;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="1320" height="720"/>
+  <circle cx="80" cy="-10" r="270" fill="#3b82f6" opacity=".13"/>
+  <circle cx="1235" cy="710" r="330" fill="#ec4899" opacity=".12"/>
+
+  <rect class="user" x="52" y="78" width="330" height="112"/>
+  <text class="s" x="80" y="110">USERS</text>
+  <text class="h" x="80" y="140">Business user / reviewer</text>
+  <text class="t" x="80" y="168">Start run · review · approve</text>
+
+  <rect class="core" x="458" y="56" width="402" height="142"/>
+  <text class="s" x="490" y="92">ORCHESTRATOR</text>
+  <text class="h" x="490" y="124">Modern Copilot Studio</text>
+  <text class="t" x="490" y="154">Plans work, creates tasks,</text>
+  <text class="t" x="490" y="178">validates and drafts report</text>
+
+  <rect class="sp" x="52" y="284" width="342" height="250"/>
+  <text class="s" x="82" y="318">SECOND BRAIN</text>
+  <text class="h" x="82" y="350">SharePoint directory</text>
+  <text class="mono" x="82" y="386">registry.md</text>
+  <text class="t" x="82" y="410">domain and entity source of truth</text>
+  <text class="mono" x="82" y="446">profiles/*.md</text>
+  <text class="t" x="82" y="470">individual grounding</text>
+  <text class="mono" x="82" y="506">reports + suggestions</text>
+
+  <rect class="dv" x="458" y="270" width="402" height="286"/>
+  <text class="s" x="490" y="304">CONTROL PLANE</text>
+  <text class="h" x="490" y="336">Dataverse</text>
+  <text class="mono" x="490" y="372">IO Run</text>
+  <text class="mono" x="490" y="402">IO Work Item</text>
+  <text class="mono" x="490" y="432">IO Evidence Source + IO Finding</text>
+  <text class="mono" x="490" y="462">IO Output Artifact + IO Approval Item</text>
+  <text class="mono" x="490" y="492">IO Configuration + registries</text>
+  <text class="t" x="490" y="526">durable state · evidence · outputs · gates</text>
+
+  <rect class="wf" x="932" y="84" width="336" height="244"/>
+  <text class="s" x="962" y="118">WORKFLOW</text>
+  <text class="h" x="962" y="150">Independent execution</text>
+  <text class="t" x="962" y="184">Triggered by queued task</text>
+  <text class="t" x="962" y="218">Processes one bounded work item</text>
+  <text class="t" x="962" y="252">Writes status and evidence</text>
+  <text class="t" x="962" y="286">Retries up to 3 times</text>
+
+  <rect class="note" x="948" y="392" width="304" height="104"/>
+  <text class="s" x="978" y="426">RESEARCH</text>
+  <text class="h" x="978" y="458">Web / sources</text>
+  <text class="t" x="978" y="484">current approved-source signals</text>
+
+  <rect class="app" x="922" y="558" width="360" height="110"/>
+  <text class="s" x="952" y="592">OVERSIGHT</text>
+  <text class="h" x="952" y="624">Managed App</text>
+  <text class="t" x="952" y="650">health · failures · approvals · artefacts</text>
+
+  <rect class="note" x="458" y="608" width="402" height="72"/>
+  <text class="h" x="490" y="638">Trust is earned</text>
+  <text class="t" x="490" y="664">validate results, evidence and reasoning</text>
+
+  <path class="arrow" d="M382 134 C410 134,426 126,458 126"/>
+  <path class="arrow" d="M660 198 C660 224,660 244,660 270"/>
+  <path class="arrow" d="M860 408 C898 408,898 210,932 210"/>
+  <path class="arrow" d="M932 286 C900 336,896 482,860 500"/>
+  <path class="arrow2" d="M458 414 C420 414,420 414,394 414"/>
+  <path class="arrow2" d="M394 344 C424 270,430 156,458 138"/>
+  <path class="arrow" d="M1102 328 C1102 358,1102 368,1102 392"/>
+  <path class="arrow" d="M860 520 C908 578,902 614,922 614"/>
+</svg>

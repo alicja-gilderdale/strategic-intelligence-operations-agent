@@ -1,0 +1,5 @@
+kind: McpTool
+authMode: Invoker
+connectionReference: cadpbm_ioagentclean_b8YQMy.cr.shared_commondataserviceforapps.711c8b00cbff46d6b3a999900c218db1
+connectorId: /providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps
+operationId: InvokeMCP

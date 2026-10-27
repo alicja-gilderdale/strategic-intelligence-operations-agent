@@ -1,0 +1,12 @@
+<botcomponent schemaname="cadpbm_ioagentclean_b8YQMy.file.intelligenceoperationsdataversedatadicti_SPsEV">
+  <componenttype>14</componenttype>
+  <description>This knowledge source searches information contained in Intelligence_Operations_Dataverse_Data_Dictionary.md</description>
+  <filedata mimetype="application/octet-stream">Intelligence_Operations_Dataverse_Data_Dictionary.md</filedata>
+  <iscustomizable>0</iscustomizable>
+  <name>Intelligence_Operations_Dataverse_Data_Dictionary.md</name>
+  <parentbotid>
+    <schemaname>cadpbm_ioagentclean_b8YQMy</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

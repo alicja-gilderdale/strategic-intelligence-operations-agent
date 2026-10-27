@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{40d8f6d5-d611-4a28-a481-75b2f2647076}</savedqueryid>
+    <layoutxml>
+      <grid name="cadpbm_ioapprovalitems" jump="cadpbm_approvalid" select="1" icon="1" preview="0">
+        <row name="cadpbm_ioapprovalitem" id="cadpbm_ioapprovalitemid">
+          <cell name="cadpbm_approvalid" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>64</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cadpbm_ioapprovalitem">
+          <attribute name="cadpbm_ioapprovalitemid" />
+          <attribute name="cadpbm_approvalid" />
+          <attribute name="createdon" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="IO Approval Item Lookup View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

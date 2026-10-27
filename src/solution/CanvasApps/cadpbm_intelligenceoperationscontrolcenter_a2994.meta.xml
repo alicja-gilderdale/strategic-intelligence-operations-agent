@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CanvasApp xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>cadpbm_intelligenceoperationscontrolcenter_a2994</Name>
+  <AppVersion>2026-10-20T18:33:34Z</AppVersion>
+  <Status>Ready</Status>
+  <CreatedByClientVersion>0.0.0.0</CreatedByClientVersion>
+  <MinClientVersion>0.0.0.0</MinClientVersion>
+  <Tags>{}</Tags>
+  <IsCdsUpgraded>0</IsCdsUpgraded>
+  <GalleryItemId xsi:nil="true"></GalleryItemId>
+  <BackgroundColor>RGBA(255,255,255,1)</BackgroundColor>
+  <DisplayName>Intelligence Operations Control Center</DisplayName>
+  <Description>Operations, audit, reporting, review, approval, and remediation experience for the Intelligence Operations Solution.</Description>
+  <CommitMessage xsi:nil="true"></CommitMessage>
+  <Publisher xsi:nil="true"></Publisher>
+  <AuthorizationReferences>[]</AuthorizationReferences>
+  <ConnectionReferences>{}</ConnectionReferences>
+  <DatabaseReferences>{"default.cds":{"databaseDetails":{"referenceType":"Environmental","environmentName":"default.cds","overrideValues":{"status":"NotSpecified","environmentVariableName":""}},"dataSources":{"ioconfigurations":{"entitySetName":"cadpbm_ioconfigurations","logicalName":"cadpbm_ioconfiguration"},"iodomainregistrys":{"entitySetName":"cadpbm_iodomainregistries","logicalName":"cadpbm_iodomainregistry"},"ioentityregistrys":{"entitySetName":"cadpbm_ioentityregistries","logicalName":"cadpbm_ioentityregistry"},"iosourceregistrys":{"entitySetName":"cadpbm_iosourceregistries","logicalName":"cadpbm_iosourceregistry"},"iotemplateregistrys":{"entitySetName":"cadpbm_iotemplateregistries","logicalName":"cadpbm_iotemplateregistry"},"ioruns":{"entitySetName":"cadpbm_ioruns","logicalName":"cadpbm_iorun"},"ioworkitems":{"entitySetName":"cadpbm_ioworkitems","logicalName":"cadpbm_ioworkitem"},"ioevidencesources":{"entitySetName":"cadpbm_ioevidencesources","logicalName":"cadpbm_ioevidencesource"},"iofindings":{"entitySetName":"cadpbm_iofindings","logicalName":"cadpbm_iofinding"},"iooutputartifacts":{"entitySetName":"cadpbm_iooutputartifacts","logicalName":"cadpbm_iooutputartifact"},"ioapprovalitems":{"entitySetName":"cadpbm_ioapprovalitems","logicalName":"cadpbm_ioapprovalitem"}}}}</DatabaseReferences>
+  <AppComponents>[]</AppComponents>
+  <AppComponentDependencies>[]</AppComponentDependencies>
+  <CanConsumeAppPass>1</CanConsumeAppPass>
+  <CanvasAppType>4</CanvasAppType>
+  <BypassConsent>0</BypassConsent>
+  <AdminControlBypassConsent>0</AdminControlBypassConsent>
+  <EmbeddedApp xsi:nil="true"></EmbeddedApp>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <CdsDependencies>{"cdsdependencies":[{"logicalname":"cadpbm_ioconfiguration","componenttype":1},{"logicalname":"cadpbm_iodomainregistry","componenttype":1},{"logicalname":"cadpbm_ioentityregistry","componenttype":1},{"logicalname":"cadpbm_iosourceregistry","componenttype":1},{"logicalname":"cadpbm_iotemplateregistry","componenttype":1},{"logicalname":"cadpbm_iorun","componenttype":1},{"logicalname":"cadpbm_ioworkitem","componenttype":1},{"logicalname":"cadpbm_ioevidencesource","componenttype":1},{"logicalname":"cadpbm_iofinding","componenttype":1},{"logicalname":"cadpbm_iooutputartifact","componenttype":1},{"logicalname":"cadpbm_ioapprovalitem","componenttype":1}]}</CdsDependencies>
+  <IsCustomizable>1</IsCustomizable>
+  <CodeAppPackageUris>
+    <CodeAppPackageUri>/CanvasApps/cadpbm_intelligenceoperationscontrolcenter_a2994_CodeAppPackages/index.html_ContentType_text/html</CodeAppPackageUri>
+    <CodeAppPackageUri>/CanvasApps/cadpbm_intelligenceoperationscontrolcenter_a2994_CodeAppPackages/assets/index-BROFxgWv.css_ContentType_text/css</CodeAppPackageUri>
+    <CodeAppPackageUri>/CanvasApps/cadpbm_intelligenceoperationscontrolcenter_a2994_CodeAppPackages/assets/index-eXLsVeyE.js_ContentType_application/javascript</CodeAppPackageUri>
+    <CodeAppPackageUri>/CanvasApps/cadpbm_intelligenceoperationscontrolcenter_a2994_CodeAppPackages/power-apps.svg_ContentType_image/svg+xml</CodeAppPackageUri>
+  </CodeAppPackageUris>
+</CanvasApp>

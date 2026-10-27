@@ -1,0 +1,5 @@
+kind: McpTool
+authMode: Invoker
+connectionReference: cadpbm_ioagentclean_b8YQMy.cr.shared_workiqsharepoint.18255c78b70f4124bfa3dbce09a1d282
+connectorId: /providers/Microsoft.PowerApps/apis/shared_workiqsharepoint
+operationId: mcp_SharePointRemoteServer

@@ -1,0 +1,2 @@
+45927a15e6f0ef1868c38aa8ad6a4c95b136819907c53c343a0935016defbb63  strategic-intelligence-operations-managed-v1.0.0.8.zip
+f3ee85fa084256317d1ac1e541642e1e08c83a97b2822d4c54be38e8a84c554e  strategic-intelligence-operations-unmanaged-v1.0.0.8.zip

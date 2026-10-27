@@ -1,0 +1,11 @@
+<botcomponent schemaname="cadpbm_ioagentclean_b8YQMy.skill.queue-intelligence-run_U_I">
+  <componenttype>9</componenttype>
+  <description>Create IO Run and IO Work Items for a recurring or ad hoc request, decomposing work using domain/entity/source/template registries.</description>
+  <iscustomizable>0</iscustomizable>
+  <name>queue-intelligence-run</name>
+  <parentbotid>
+    <schemaname>cadpbm_ioagentclean_b8YQMy</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

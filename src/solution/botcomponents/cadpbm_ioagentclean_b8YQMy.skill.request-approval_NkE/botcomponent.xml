@@ -1,0 +1,11 @@
+<botcomponent schemaname="cadpbm_ioagentclean_b8YQMy.skill.request-approval_NkE">
+  <componenttype>9</componenttype>
+  <description>Create approval items for publish, second-brain update or registry changes. Present exact proposed change and recipients before triggering any outbound notification.</description>
+  <iscustomizable>0</iscustomizable>
+  <name>request-approval</name>
+  <parentbotid>
+    <schemaname>cadpbm_ioagentclean_b8YQMy</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

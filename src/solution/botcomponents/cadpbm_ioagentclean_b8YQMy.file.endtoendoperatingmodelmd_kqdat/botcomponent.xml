@@ -1,0 +1,12 @@
+<botcomponent schemaname="cadpbm_ioagentclean_b8YQMy.file.endtoendoperatingmodelmd_kqdat">
+  <componenttype>14</componenttype>
+  <description>This knowledge source searches information contained in end_to_end_operating_model.md</description>
+  <filedata mimetype="application/octet-stream">end_to_end_operating_model.md</filedata>
+  <iscustomizable>0</iscustomizable>
+  <name>end_to_end_operating_model.md</name>
+  <parentbotid>
+    <schemaname>cadpbm_ioagentclean_b8YQMy</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

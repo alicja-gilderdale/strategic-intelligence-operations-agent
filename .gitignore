@@ -1,0 +1,8 @@
+# Raw exports stay local. Validated release packages under dist are committed.
+exports/*.zip
+
+# Local logs and temporary files.
+*.log
+*.tmp
+.DS_Store
+Thumbs.db

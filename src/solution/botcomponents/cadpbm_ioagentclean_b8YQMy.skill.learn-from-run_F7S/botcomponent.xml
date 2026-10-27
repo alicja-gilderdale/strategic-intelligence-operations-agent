@@ -1,0 +1,11 @@
+<botcomponent schemaname="cadpbm_ioagentclean_b8YQMy.skill.learn-from-run_F7S">
+  <componenttype>9</componenttype>
+  <description>Propose learned-context updates from a completed run — durable lessons, source gaps, template improvements and registry improvements. Creates an approval item before updating docs/learned or registries.</description>
+  <iscustomizable>0</iscustomizable>
+  <name>learn-from-run</name>
+  <parentbotid>
+    <schemaname>cadpbm_ioagentclean_b8YQMy</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

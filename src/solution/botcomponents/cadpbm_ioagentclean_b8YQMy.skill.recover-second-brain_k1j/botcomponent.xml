@@ -1,0 +1,11 @@
+<botcomponent schemaname="cadpbm_ioagentclean_b8YQMy.skill.recover-second-brain_k1j">
+  <componenttype>9</componenttype>
+  <description>Rebuild missing second-brain starter files from Dataverse configuration. Uses Dataverse as the source of truth and asks before overwriting existing files.</description>
+  <iscustomizable>0</iscustomizable>
+  <name>recover-second-brain</name>
+  <parentbotid>
+    <schemaname>cadpbm_ioagentclean_b8YQMy</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

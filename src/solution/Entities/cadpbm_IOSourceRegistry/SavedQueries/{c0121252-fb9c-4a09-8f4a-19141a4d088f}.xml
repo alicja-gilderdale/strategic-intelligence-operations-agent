@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{c0121252-fb9c-4a09-8f4a-19141a4d088f}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cadpbm_sourceid" select="1" icon="1" preview="1">
+        <row name="result" id="cadpbm_iosourceregistryid">
+          <cell name="cadpbm_sourceid" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>1</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cadpbm_iosourceregistry">
+          <attribute name="cadpbm_iosourceregistryid" />
+          <attribute name="cadpbm_sourceid" />
+          <attribute name="createdon" />
+          <order attribute="cadpbm_sourceid" descending="false" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="IO Source Registry Advanced Find View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

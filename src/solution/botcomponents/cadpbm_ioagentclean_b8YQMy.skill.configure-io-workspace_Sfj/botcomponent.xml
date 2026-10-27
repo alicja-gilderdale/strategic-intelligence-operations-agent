@@ -1,0 +1,11 @@
+<botcomponent schemaname="cadpbm_ioagentclean_b8YQMy.skill.configure-io-workspace_Sfj">
+  <componenttype>9</componenttype>
+  <description>Set up or validate the IO Configuration row and SharePoint second-brain location, and scaffold the starter second-brain folder structure.</description>
+  <iscustomizable>0</iscustomizable>
+  <name>configure-io-workspace</name>
+  <parentbotid>
+    <schemaname>cadpbm_ioagentclean_b8YQMy</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

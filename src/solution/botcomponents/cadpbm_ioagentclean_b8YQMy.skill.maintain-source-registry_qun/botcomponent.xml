@@ -1,0 +1,11 @@
+<botcomponent schemaname="cadpbm_ioagentclean_b8YQMy.skill.maintain-source-registry_qun">
+  <componenttype>9</componenttype>
+  <description>Add, update or retire approved intelligence sources with credibility tier and allowed use, across public web, SharePoint, M365, CRM, Dataverse, manual upload and Blob source types.</description>
+  <iscustomizable>0</iscustomizable>
+  <name>maintain-source-registry</name>
+  <parentbotid>
+    <schemaname>cadpbm_ioagentclean_b8YQMy</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>
